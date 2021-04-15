@@ -1,0 +1,6 @@
+- name: Cockpit.Install - Install cockpit package
+  ansible.builtin.package:
+    name: cockpit
+    state: present
+  notify:
+    - "Cockpit Enable"

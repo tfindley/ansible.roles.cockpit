@@ -1,0 +1,7 @@
+- name: Postfix.Firewalld - Open Port 9090
+  ansible.posix.firewalld:
+    port: 9090/tcp
+    permanent: yes
+    state: enabled
+  become: True
+  notify: "FirewallD Reload"

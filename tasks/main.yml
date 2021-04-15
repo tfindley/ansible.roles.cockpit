@@ -1,0 +1,17 @@
+---
+# tasks file for cockpit
+
+- name: Postfix.Main - Populate service facts
+  ansible.builtin.service_facts:
+  become: True
+
+- name: Cockpit.Main - handoff to Network task
+  ansible.builtin.include_tasks: network.yml
+
+- name: Cockpit.Main - handoff to Install task
+  ansible.builtin.include_tasks: install.yml
+
+- name: Cockpit.Main - Configure FirewallD
+  ansible.builtin.include_tasks: firewalld.yml
+  when:
+    - "'firewalld.service' in services"

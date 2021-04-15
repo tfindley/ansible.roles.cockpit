@@ -1,0 +1,50 @@
+---
+# handlers file for cockpit
+
+- name: "FirewallD Start"
+  ansible.builtin.service:
+    name: firewalld
+    state: started
+  become: True
+
+- name: "FirewallD Stop"
+  ansible.builtin.service:
+    name: firewalld
+    state: stopped
+  become: True
+
+- name: "FirewallD Restart"
+  ansible.builtin.service:
+    name: firewalld
+    state: restarted
+  become: True
+
+- name: "FirewallD Reload"
+  ansible.builtin.service:
+    name: firewalld
+    state: reloaded
+  become: True
+
+- name: "FirewallD Enable"
+  ansible.builtin.service:
+    name: firewalld
+    enabled: True
+  become: True
+
+- name: "Cockpit Enable"
+  ansible.builtin.service:
+    name: cockpit.socket
+    enabled: True
+  become: True
+
+- name: "Cockpit Disable"
+  ansible.builtin.service:
+    name: cockpit.socket
+    enabled: False
+  become: True
+
+- name: "NM Enable"
+  ansible.builtin.service:
+    name: network-manager
+    enabled: True
+  become: True
